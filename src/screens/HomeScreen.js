@@ -255,19 +255,24 @@ class HomeScreen extends React.Component {
     }
 
     render() {
+        const { products } = this.state
+        const { cart } = this.props
         return (
             <div className="homepage">
+                {console.log(cart)}
                 <div className="content">
                     <div className="columns">
-                        <div className="col">
-                            <Product />
-                        </div>
-                        <div className="col">
-                            <Product />
-                        </div>
-                        <div className="col">
-                            <Product />
-                        </div>
+                        {products && products.map((product, index) => 
+                            <div className="col" key={index}>
+                                <Product
+                                    onClick={() => this.props.addProductCart(product.sku)}
+                                    title={product.title}
+                                    formatPrice={product.currencyFormat}
+                                    price={product.price}
+                                    installments={product.installments}
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
                 <Bag />
@@ -276,10 +281,10 @@ class HomeScreen extends React.Component {
     }
 }
 
-
 const mapStateToProps = (state) => {
     return {
-        products: state.global.products
+        products: state.global.products,
+        cart: state.global.cart
     }
 }
 

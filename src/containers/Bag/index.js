@@ -1,4 +1,8 @@
 import React from 'react'
+import { compose } from "redux"
+import { connect } from "react-redux"
+
+import * as actions from "../../store/actions"
 
 import { Container, MaskBag } from './styles'
 import BagHeader from '../../components/Bag/BagHeader'
@@ -15,16 +19,11 @@ class Bag extends React.Component {
 
     }
 
-    handleClose = () => {
-        this.setState({
-            show: !this.state.show
-        })
-    }
-
     render() {
+        const { bag, toggleBag } = this.props
         return(
-            <Container className={this.state.show ? 'show' : null}>
-                <MaskBag className={this.state.show ? 'show' : null} onClick={this.handleClose} />
+            <Container className={bag == true ? 'show' : null}>
+                <MaskBag className={bag == true ? 'show' : null} onClick={() => toggleBag('hide')} />
                 <BagHeader />
                 <div>
                     <CartProduct />
@@ -37,4 +36,15 @@ class Bag extends React.Component {
     }
 }
 
-export default Bag
+const mapStateToProps = (state) => {
+    return {
+        bag: state.ui.bag
+    }
+}
+
+export default compose(
+    connect(
+        mapStateToProps,
+        actions
+    )
+)(Bag)

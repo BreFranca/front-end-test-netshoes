@@ -13,7 +13,9 @@ const Product = (props) => (
         <ProductImage src={props.src} alt={props.alt} />
         <ProductDescription>{props.title}</ProductDescription>
         <ProductPrice format={props.formatPrice} price={props.price} />
-        <ProductInstallments installments={props.installments} price={props.price} />
+        { props.installments ?
+            <ProductInstallments installments={props.installments} price={props.price} />
+        : null }
     </Container>
 )
 
