@@ -60,11 +60,32 @@ export const addProductCart = (id) => async dispatch => {
 			type: types.GET_PRODUCTS_CART,
 			payload: cart
 		})
-	}
 
-	const product = cart.find(product => product.id === id)
-	if (product === undefined) {
-
+		const product = cart.find(product => product.id === id)
+		if (product === undefined) {
+	
+			await restApi
+				.loadProduct(id)
+				.then(response => {
+					const { data } = response
+	
+					dispatch({
+						type: types.INSERT_PRODUCT_CART,
+						payload: data
+					})
+	
+					cart = [
+						...cart,
+						data
+					]
+	
+					localStorage.setItem('cart', JSON.stringify(cart));
+	
+				}
+				)
+				.catch(e => console.log("erro", e))
+		}
+	} else {
 		await restApi
 			.loadProduct(id)
 			.then(response => {
@@ -75,17 +96,18 @@ export const addProductCart = (id) => async dispatch => {
 					payload: data
 				})
 
-				cart = [
-					...cart,
+				const cartList = [
 					data
 				]
 
-				localStorage.setItem('cart', JSON.stringify(cart));
+				localStorage.setItem('cart', JSON.stringify(cartList));
 
 			}
 			)
 			.catch(e => console.log("erro", e))
 	}
+
+	return true
 }
 
 export const deleteProductCart = (id) => dispatch => {
@@ -93,7 +115,7 @@ export const deleteProductCart = (id) => dispatch => {
 
 	if (cart) {
 		cart = cart.filter((product, index, cart) => {
-			return product.id != id
+			return product.id !== id
 		})
 
 		dispatch({
@@ -101,8 +123,21 @@ export const deleteProductCart = (id) => dispatch => {
 			payload: cart
 		})
 
-		console.log(cart)
-
 		localStorage.setItem('cart', JSON.stringify(cart));
+
+		return true
 	}
+}
+
+export const clearCart = () => dispatch => {
+	localStorage.removeItem('cart');
+
+	dispatch({
+		type: types.UPDATE_CART,
+		payload: []
+	})
+
+	const cart = []
+
+	return cart
 }

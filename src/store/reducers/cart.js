@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
         case types.INSERT_PRODUCT_CART:
             return { ...state, cartList: [...state.cartList, action.payload], }
         case types.UPDATE_CART:
-            return { ...state, cartList: [action.payload] }
+            return { ...state, cartList: action.payload }
         default:
             return state
     }

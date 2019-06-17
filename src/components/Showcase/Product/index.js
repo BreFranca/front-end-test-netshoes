@@ -14,7 +14,7 @@ const Product = (props) => (
         <ProductDescription>{props.title}</ProductDescription>
         <ProductPrice format={props.formatPrice} price={props.price} />
         { props.installments ?
-            <ProductInstallments installments={props.installments} price={props.price} />
+            <ProductInstallments installments={props.installments} price={props.price} formatPrice={props.formatPrice} />
         : null }
     </Container>
 )

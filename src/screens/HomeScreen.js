@@ -13,7 +13,10 @@ class HomeScreen extends React.Component {
 
     handleAdd = (sku) => {
         this.props.addProductCart(sku)
-        this.props.toggleBag('show')
+        .then(response => {
+            this.props.toggleBag('show')
+            this.props.getProductsCart()
+        })
     }
 
     render() {

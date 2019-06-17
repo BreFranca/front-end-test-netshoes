@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import * as actions from "../../store/actions"
 
 import { Container, MaskBag } from './styles'
+import Button from '../../components/Button'
 import BagHeader from '../../components/Bag/BagHeader'
 import CartProduct from '../../components/Cart/CartProduct'
 import BagButton from '../../components/Bag/BagButton'
@@ -23,6 +24,15 @@ class Bag extends React.Component {
         this.props.deleteProductCart(index)
     }
 
+    handleClear = () => {
+        this.props.clearCart()
+        this.props.getProductsCart()
+
+        setTimeout(function() {
+            this.props.toggleBag('hide')
+        }.bind(this), 500);
+    }
+
     render() {
         const { cartList, cartAmount, bag, toggleBag } = this.props
         return(
@@ -30,6 +40,7 @@ class Bag extends React.Component {
                 <MaskBag className={bag === true ? 'show' : null} onClick={() => toggleBag('hide')} />
                 <BagHeader total={cartList ? cartList.length : null} />
                 <div>
+                    <Button onClick={() => this.handleClear()}>Limpar Sacola</Button>
                     { cartList && cartList.map((product, index) => 
                         <CartProduct
                             key={index}

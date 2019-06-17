@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import { Image } from './styles'
 
 const ProductImage = (props) => (
-    <Image {...props} />
+    <Image>
+        <img {...props} alt={props.alt} />
+    </Image>
 )
 
 ProductImage.propTypes = {

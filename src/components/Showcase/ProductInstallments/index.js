@@ -6,7 +6,7 @@ import { Installments } from './styles'
 import { formatInstallments } from '../../../helpers'
 
 const ProductInstallments = (props) => (
-    <Installments>{formatInstallments(props.installments, props.price)}</Installments>
+    <Installments>{formatInstallments(props.installments, props.price, props.formatPrice)}</Installments>
 )
 
 ProductInstallments.propTypes = {

@@ -6,6 +6,7 @@ export const Description = styled.h3`
     margin: 8px 20px 14px;
     min-height: 38px;
     position: relative;
+    cursor: pointer;
     &::after {
         content: '';
         width: 15px;

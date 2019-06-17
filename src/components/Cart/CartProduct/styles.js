@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Product = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 25px 0;
     margin: 0 35px 0 23px;
     border-bottom: 2px solid #000000;
@@ -21,4 +22,9 @@ export const RightActions = styled.div`
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
+`
+
+export const LeftInfos = styled.div`
+    display: flex;
+    align-items: center;
 `

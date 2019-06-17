@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Header, CountBag, Title, Count } from './styles'
 
@@ -8,5 +9,13 @@ const BagHeader = (props) => (
         <Title>Sacola</Title>
     </Header>
 )
+
+BagHeader.propTypes = {
+    total: PropTypes.number.isRequired,
+}
+
+BagHeader.defaultProps = {
+    total: 1000,
+}
 
 export default BagHeader

@@ -1,17 +1,17 @@
 import axios from "axios"
 
 export const formatPrice = (format, price) => {
-    price = price.toString().split('.')
+    price = Number(price).toString().split('.')
 
     return `<small>${format}</small> <strong>${price[0]}<strong><small>,${price[1]}0</small>`
 }
 
-export const formatInstallments = (installments, price) => {   
+export const formatInstallments = (installments, price, format) => {   
     let quota = price / installments
 
     quota = quota.toFixed(2).toString().replace('.', ',')
 
-    return `ou ${installments}x R$${quota}`
+    return `ou ${installments}x ${format + quota}`
 }
 
 export const instance = axios.create({
