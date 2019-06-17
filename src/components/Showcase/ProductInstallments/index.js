@@ -3,13 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Installments } from './styles'
 
-const formatInstallments = (installments, price) => {   
-    let quota = price / installments
-
-    quota = quota.toFixed(2).toString().replace('.', ',')
-
-    return `ou ${installments}x R$${quota}`
-}
+import { formatInstallments } from '../../../helpers'
 
 const ProductInstallments = (props) => (
     <Installments>{formatInstallments(props.installments, props.price)}</Installments>

@@ -3,7 +3,7 @@ import React from 'react'
 import { Amount } from './styles'
 
 const CartProductAmount = (props) => (
-    <Amount>Quantidade: 1</Amount>
+    <Amount>Quantidade: {props.amount}</Amount>
 )
 
 export default CartProductAmount

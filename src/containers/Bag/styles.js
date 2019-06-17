@@ -9,6 +9,12 @@ export const Container = styled.div`
     transition: .4s all linear;
     right: -530px;
     opacity: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding-bottom: 50px;
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &.show {
         right: 0;
         opacity: 1;

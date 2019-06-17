@@ -9,19 +9,19 @@ import CartProductAmount from '../CartProductAmount'
 import CartProductDelete from '../CartProductDelete'
 import CartProductPrice from '../CartProductPrice'
 
-const CartProduct = () => (
+const CartProduct = (props) => (
     <Product>
         <div>
             <CartProductImage />
             <Descriptions>
-                <CartProductTitle />
-                <CartProductDescription />
-                <CartProductAmount />
+                <CartProductTitle>{props.title}</CartProductTitle>
+                <CartProductDescription size={props.size} style={props.style} />
+                <CartProductAmount amount={1} />
             </Descriptions>
         </div>
         <RightActions>
-            <CartProductDelete />
-            <CartProductPrice />
+            <CartProductDelete onClick={props.onClick} />
+            <CartProductPrice format={props.formatPrice} price={props.price} />
         </RightActions>
     </Product>
 )

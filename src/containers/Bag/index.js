@@ -16,19 +16,37 @@ class Bag extends React.Component {
     }
 
     componentDidMount = () => {
+        this.props.getProductsCart()
+    }
 
+    handleRemove = (index) => {
+        this.props.deleteProductCart(index)
     }
 
     render() {
-        const { bag, toggleBag } = this.props
+        const { cartList, cartAmount, bag, toggleBag } = this.props
         return(
-            <Container className={bag == true ? 'show' : null}>
-                <MaskBag className={bag == true ? 'show' : null} onClick={() => toggleBag('hide')} />
-                <BagHeader />
+            <Container className={bag === true ? 'show' : null}>
+                <MaskBag className={bag === true ? 'show' : null} onClick={() => toggleBag('hide')} />
+                <BagHeader total={cartList ? cartList.length : null} />
                 <div>
-                    <CartProduct />
-                    <CartProduct />
-                    <BagTotal />
+                    { cartList && cartList.map((product, index) => 
+                        <CartProduct
+                            key={index}
+                            title={product.title}
+                            size={product.availableSizes[0]}
+                            formatPrice={product.currencyFormat}
+                            price={product.price}
+                            style={product.style}
+                            onClick={() => this.handleRemove(product.id)} />
+                    ) }
+                    {cartList.length > 0 ?
+                        <BagTotal
+                            formatPrice={cartList ? cartList[0].currencyFormat : 'R$'}
+                            installments={cartAmount ? cartAmount.installments : null}
+                            amount={cartAmount ? cartAmount.total : null}
+                        />
+                    : null}
                     <BagButton />
                 </div>
             </Container>
@@ -38,7 +56,9 @@ class Bag extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        bag: state.ui.bag
+        cartList: state.cart.cartList,
+        bag: state.ui.bag,
+        cartAmount: state.cart.cartAmount
     }
 }
 
