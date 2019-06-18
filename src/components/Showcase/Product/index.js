@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import { Container } from './styles'
 
-import ProductImage from '../ProductImage';
-import ProductDescription from '../ProductDescription';
+import ProductImage from '../ProductImage'
+import ProductDescription from '../ProductDescription'
 import ProductPrice from '../ProductPrice'
-import ProductInstallments from '../ProductInstallments';
+import ProductInstallments from '../ProductInstallments'
 
 const Product = (props) => (
     <Container onClick={props.onClick}>

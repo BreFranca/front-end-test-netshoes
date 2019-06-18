@@ -12,7 +12,7 @@ CartProductImage.propTypes = {
 }
 
 CartProductImage.defaultProps = {
-    image: '../../../assets/images/corinthians1.jpg'
+    image: '../../../assets/images/product-blank.jpg'
 }
 
 export default CartProductImage

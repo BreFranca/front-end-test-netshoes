@@ -14,7 +14,7 @@ ProductImage.propTypes = {
 }
 
 ProductImage.defaultProps = {
-    src: "../../assets/images/corinthians1.jpg",
+    src: "../../../assets/images/product-blank.jpg",
     alt: "Alt Image"
 }
 

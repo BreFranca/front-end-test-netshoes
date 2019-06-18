@@ -3,7 +3,16 @@ import axios from "axios"
 export const formatPrice = (format, price) => {
     price = Number(price).toString().split('.')
 
-    return `<small>${format}</small> <strong>${price[0]}<strong><small>,${price[1]}0</small>`
+    let cents = '0'
+    if(price[1] === undefined) {
+        cents = '00'
+    } else if(price[1].length > 1) {
+        cents = price[1]
+    } else {
+        cents = price[1] + '0'
+    }
+
+    return `<small>${format}</small> <strong>${price[0]}<strong><small>,${cents}</small>`
 }
 
 export const formatInstallments = (installments, price, format) => {   

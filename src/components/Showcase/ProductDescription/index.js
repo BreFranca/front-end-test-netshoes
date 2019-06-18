@@ -11,7 +11,7 @@ ProductDescription.propTypes = {
 }
 
 ProductDescription.defaultProps = {
-    children: "Nome do Produto",
+    children: "Descrição do Produto",
 }
 
 export default ProductDescription

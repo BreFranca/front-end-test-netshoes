@@ -7,9 +7,9 @@ import { shallow, mount } from 'enzyme'
 
 describe('ProductInstallments', () => {
     it('should be a instance of ProductInstallments', () => {
-        const installments = shallow(<ProductInstallments installments={8} formatPrice={'R$'} price={220} />)
+        const installments = shallow(<ProductInstallments installments={9} formatPrice={'R$'} price={220} />)
 
-        expect(installments.text()).toEqual('ou 8x R$27,50')
+        expect(installments.text()).toEqual('ou 9x R$24,44')
         
     })
 
