@@ -4,11 +4,17 @@ export const Product = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 0;
-    margin: 0 35px 0 23px;
+    padding: 25px 35px 25px 23px;
     border-bottom: 2px solid #000000;
+    transition: .4s all linear;
     &:first-child {
         border-top: 2px solid #000000;
+    }
+    &:hover {
+        background: #000000;
+        img {
+            filter: brightness(1) invert(1)
+        }
     }
 `
 
