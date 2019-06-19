@@ -1,28 +1,21 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
+const cors = require('cors');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
-app.use(bodyParser.json());
+const router = express.Router();
 
-app.get('/maps', function(req, res) {
-  var dados = [
-    {
-      lat: -25.470991, 
-      lon: -49.271036
-    },
-    {
-      lat: -0.935586,
-      lon: -49.635540
-    },
-    {
-      lat: -2.485874, 
-      lon: -43.128493
-    }
-  ];
+//Rotas
+const index = require('./routes/index');
+const productRoute = require('./routes/productRoute');
 
-  res.send(JSON.stringify(dados));
-});
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
-app.listen(8000, function() {
-  console.log('Servidor rodando na porta 8000.');
-});
+app.use(cors());
+app.options('*', cors());
+app.use('/api/', index);
+app.use('/api/products', productRoute);
+app.use('/static', express.static('public'));
+
+module.exports = app;

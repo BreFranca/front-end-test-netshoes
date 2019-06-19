@@ -4,6 +4,8 @@ import { connect } from "react-redux"
 
 import * as actions from "../../store/actions"
 
+import { getImage } from '../../helpers'
+
 import { Container, MaskBag } from './styles'
 import Button from '../../components/Button'
 import BagHeader from '../../components/Bag/BagHeader'
@@ -13,15 +15,15 @@ import BagTotal from '../../components/Bag/BagTotal'
 
 class Bag extends React.Component {
     state = {
-        show: false
+        show: false,
     }
 
     componentDidMount = () => {
         this.props.getProductsCart()
     }
 
-    handleRemove = (index) => {
-        this.props.deleteProductCart(index)
+    handleRemove = (index, size) => {
+        this.props.deleteProductCart(index, size)
     }
 
     handleClear = () => {
@@ -45,11 +47,14 @@ class Bag extends React.Component {
                         <CartProduct
                             key={index}
                             title={product.title}
-                            size={product.availableSizes[0]}
+                            description={product.description}
+                            imageUrl={getImage(product.id)}
+                            size={product.size}
                             formatPrice={product.currencyFormat}
-                            price={product.price}
+                            price={product.totalPrice}
                             style={product.style}
-                            onClick={() => this.handleRemove(product.id)} />
+                            amount={product.amount}
+                            onClick={() => this.handleRemove(product.id, product.size)} />
                     ) }
                     {cartList.length > 0 ?
                         <BagTotal
@@ -58,7 +63,7 @@ class Bag extends React.Component {
                             amount={cartAmount ? cartAmount.total : null}
                         />
                     : null}
-                    <BagButton />
+                    <BagButton onClick={() => this.handleClear()} />
                 </div>
             </Container>
         )

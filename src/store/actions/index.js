@@ -1,4 +1,4 @@
-import { restApi } from "../../helpers"
+import { restApi, insertSizeAmount } from "../../helpers"
 
 import * as types from "../constants"
 
@@ -18,19 +18,24 @@ export const toggleBag = (status) => dispatch => {
 
 // ### PRODUCTS ###
 export const getProducts = () => async dispatch => {
-	await restApi
+	const products = await restApi
 		.loadProducts()
-		.then(response =>
+		.then(response => {
+			const { data } = response
 			dispatch({
 				type: types.GET_PRODUCTS,
-				payload: response.data
+				payload: data
 			})
+			return data
+		}
 		)
 		.catch(e => console.log("erro", e))
+
+	return products
 }
 
 export const getProductsCart = () => async dispatch => {
-	const cart = JSON.parse(localStorage.getItem('cart'));
+	const cart = JSON.parse(localStorage.getItem('cart'))
 
 	if (cart) {
 		dispatch({
@@ -38,8 +43,11 @@ export const getProductsCart = () => async dispatch => {
 			payload: cart
 		})
 
-		const total = cart.reduce((a, b) => a + b.price, 0)
-		const installments = Math.max(...cart.map(product => product.installments), 0);
+		let total = cart.reduce((a, b) => a + b.totalPrice, 0)
+		let installments = Math.max(...cart.map(product => product.installments), 0)
+		total = Number(total.toFixed(2))
+		installments = Number(installments.toFixed(2))
+
 		const cartAmount = {
 			total: total,
 			installments: installments
@@ -52,8 +60,8 @@ export const getProductsCart = () => async dispatch => {
 	}
 }
 
-export const addProductCart = (id) => async dispatch => {
-	let cart = JSON.parse(localStorage.getItem('cart'));
+export const addProductCart = (id, size) => async dispatch => {
+	let cart = JSON.parse(localStorage.getItem('cart'))
 
 	if (cart) {
 		dispatch({
@@ -61,29 +69,46 @@ export const addProductCart = (id) => async dispatch => {
 			payload: cart
 		})
 
-		const product = cart.find(product => product.id === id)
+		let product = cart.find(product => product.id === id && product.size === size)
+
 		if (product === undefined) {
-	
 			await restApi
 				.loadProduct(id)
 				.then(response => {
 					const { data } = response
-	
-					dispatch({
-						type: types.INSERT_PRODUCT_CART,
-						payload: data
-					})
-	
+
+					product = insertSizeAmount(data, size)
+
 					cart = [
 						...cart,
-						data
+						product
 					]
-	
-					localStorage.setItem('cart', JSON.stringify(cart));
+
+					dispatch({
+						type: types.UPDATE_CART,
+						payload: cart
+					})
+
+					localStorage.setItem('cart', JSON.stringify(cart))
 	
 				}
-				)
-				.catch(e => console.log("erro", e))
+			)
+			.catch(e => console.log("erro", e))
+		} else {
+
+			let cartList = cart.filter(product => product.id !== id)
+			let specify = cart.filter(product => product.id === id && product.size !== size)
+
+			product = insertSizeAmount(product)
+
+			cartList.concat(specify)
+
+			cartList = [
+				...cartList,
+				product
+			]
+
+			localStorage.setItem('cart', JSON.stringify(cart))
 		}
 	} else {
 		await restApi
@@ -91,16 +116,17 @@ export const addProductCart = (id) => async dispatch => {
 			.then(response => {
 				const { data } = response
 
+				const product = insertSizeAmount(data, size)
 				dispatch({
 					type: types.INSERT_PRODUCT_CART,
-					payload: data
+					payload: product
 				})
 
 				const cartList = [
-					data
+					product
 				]
 
-				localStorage.setItem('cart', JSON.stringify(cartList));
+				localStorage.setItem('cart', JSON.stringify(cartList))
 
 			}
 			)
@@ -110,31 +136,64 @@ export const addProductCart = (id) => async dispatch => {
 	return true
 }
 
-export const deleteProductCart = (id) => dispatch => {
-	let cart = JSON.parse(localStorage.getItem('cart'));
+export const deleteProductCart = (id, size) => dispatch => {
+	let cart = JSON.parse(localStorage.getItem('cart'))
 
 	if (cart) {
-		cart = cart.filter((product, index, cart) => {
-			return product.id !== id
-		})
+		let cartList = cart.filter(product => product.id !== id)
+		let specify = cart.filter(product => product.id === id && product.size !== size)
+
+		cartList = cartList.concat(specify)
 
 		dispatch({
 			type: types.UPDATE_CART,
-			payload: cart
+			payload: cartList
 		})
 
-		localStorage.setItem('cart', JSON.stringify(cart));
+		let total = cartList.reduce((a, b) => a + b.totalPrice, 0)
+		let installments = Math.max(...cartList.map(product => product.installments), 0)
+		total = Number(total.toFixed(2))
+		installments = Number(installments.toFixed(2))
+
+		const cartAmount = {
+			total: total,
+			installments: installments
+		}
+
+		dispatch({
+			type: types.GET_TOTAL_AMOUNT_CART,
+			payload: cartAmount
+		})
+
+		if(cartAmount.total === 0) {
+			dispatch({
+				type: types.TOGGLE_BAG,
+				payload: false
+			})
+		}
+
+		localStorage.setItem('cart', JSON.stringify(cartList))
 
 		return true
 	}
 }
 
 export const clearCart = () => dispatch => {
-	localStorage.removeItem('cart');
+	localStorage.removeItem('cart')
 
 	dispatch({
 		type: types.UPDATE_CART,
 		payload: []
+	})
+
+	const cartAmount = {
+		total: 0,
+		installments: null
+	}
+
+	dispatch({
+		type: types.GET_TOTAL_AMOUNT_CART,
+		payload: cartAmount
 	})
 
 	const cart = []

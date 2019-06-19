@@ -65,3 +65,15 @@ img.load-item {
     background-position: 140px;
   }
 }
+
+@media screen and (max-width: 680px) {
+  .columns .col {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .columns .col {
+    width: 100%;
+  }
+}

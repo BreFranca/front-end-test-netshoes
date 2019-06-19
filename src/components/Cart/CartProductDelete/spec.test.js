@@ -6,19 +6,13 @@ import '../../../enzyme'
 import { shallow } from 'enzyme'
 
 describe('CartProductDelete', () => {
-    const mockFunc = { 
-        Mock: jest.fn()
-    }
+    it('should be called on click', () => {
+        const mockFunc = jest.fn()
 
-    const spyMock = jest.spyOn(mockFunc, 'Mock');
+        const component = shallow(<CartProductDelete onClick={mockFunc} />)
 
-    it('should call delete item on button click', () => {
-        const component = shallow(<CartProductDelete onClick={spyMock} />)
+        component.simulate('click')
 
-        // component.find('img').simulate('click');
-
-        expect(spyMock).toHaveBeenCalled()
-
-        spyMock.mockRestore()
+        expect(mockFunc).toHaveBeenCalledTimes(1)
     })
 })

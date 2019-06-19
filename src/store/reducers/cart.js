@@ -2,7 +2,10 @@ import * as types from "../constants"
 
 const initialState = {
     cartList: [],
-    cartAmount: {}
+    cartAmount: {
+        total: 0,
+        installments: null
+    }
 }
 
 export default (state = initialState, action) => {

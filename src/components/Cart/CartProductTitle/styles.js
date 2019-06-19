@@ -5,4 +5,5 @@ export const Title = styled.h4`
     font-size: 1em;
     font-weight: 700;
     margin-bottom: 6px;
+    max-width: 330px;
 `

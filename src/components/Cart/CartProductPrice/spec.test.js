@@ -6,7 +6,7 @@ import '../../../enzyme'
 import { mount } from 'enzyme'
 
 describe('CartProductPrice', () => {
-    it('should be a instance of CartProductPrice', () => {
+    it('should be a instance of CartProductPrice with price in the format', () => {
         const component = mount(<CartProductPrice format={'R$'} price={532.0} />)
 
         expect(component.text()).toEqual('R$ 532,00')
@@ -14,7 +14,7 @@ describe('CartProductPrice', () => {
         component.unmount()
     })
 
-    it('should be a instance of CartProductPrice', () => {
+    it('should be a instance of CartProductPrice with price in the format', () => {
         const component = mount(<CartProductPrice format={'R$'} price={1950.54} />)
 
         expect(component.text()).toEqual('R$ 1950,54')
@@ -24,7 +24,7 @@ describe('CartProductPrice', () => {
         component.unmount()
     })
 
-    it('should be a instance of CartProductPrice', () => {
+    it('should be a instance of CartProductPrice with price in the format', () => {
         const component = mount(<CartProductPrice format={'R$'} price={233} />)
 
         expect(component.text()).toEqual('R$ 233,00')

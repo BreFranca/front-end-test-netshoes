@@ -12,8 +12,4 @@ describe('ProductInstallments', () => {
         expect(installments.text()).toEqual('ou 9x R$24,44')
         
     })
-
-    it('dsadssda', () => {
-        const installments = mount(<ProductInstallments installments={8} price={220} />)
-    })
 })

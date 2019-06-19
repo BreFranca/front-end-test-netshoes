@@ -13,5 +13,5 @@ describe('CartProductAmount', () => {
         expect(component.text()).not.toEqual('10')
 
         component.unmount()
-    })
+    });
 })
