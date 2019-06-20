@@ -1,6 +1,7 @@
 import axios from "axios"
 
-export const BASE_URL = 'http://localhost:8000/'
+// export const API_URL = 'http://localhost:8000/api/'
+export const API_URL = 'http://my-json-server.typicode.com/BreFranca/front-end-test-netshoes/'
 
 export const formatPrice = (format, price) => {
     price = Number(price).toString().split('.')
@@ -37,7 +38,7 @@ export const getImage = id => {
         id = id.toString().split('')
         id = id[1]
     }
-    return BASE_URL + 'static/images/corinthians' + id +'.jpg'
+    return '../../../assets/products/corinthians' + id +'.jpg'
 }
 
 export const getRandomSize = (sizes) => {
@@ -64,8 +65,7 @@ export const insertSizeAmount = (product, size) => {
 }
 
 export const instance = axios.create({
-    // baseURL: "http://my-json-server.typicode.com/BreFranca/front-end-test-netshoes/",
-    baseURL: BASE_URL + "api/",
+    baseURL: API_URL,
     headers: {
         "Access-Control-Allow-Origin": "*",
     },
