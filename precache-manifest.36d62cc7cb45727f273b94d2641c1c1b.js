@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5c056d45048473d0359eef74a110e044",
+    "revision": "1589bb0cf85510ad75a49d21b8b95c12",
     "url": "https://brefranca.github.io/front-end-test-netshoes/index.html"
   },
   {
-    "revision": "695f41af2f957e9a9892",
+    "revision": "2bb5f29f6bcfc12b9a6f",
     "url": "https://brefranca.github.io/front-end-test-netshoes/static/css/main.f24d1afb.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://brefranca.github.io/front-end-test-netshoes/static/js/2.b386d207.chunk.js"
   },
   {
-    "revision": "695f41af2f957e9a9892",
-    "url": "https://brefranca.github.io/front-end-test-netshoes/static/js/main.45d422b3.chunk.js"
+    "revision": "2bb5f29f6bcfc12b9a6f",
+    "url": "https://brefranca.github.io/front-end-test-netshoes/static/js/main.209b1435.chunk.js"
   },
   {
     "revision": "4234cd25d9eb68749d17",
