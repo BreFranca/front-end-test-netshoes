@@ -21,14 +21,20 @@ Launches the test runner in the interactive watch mode.
 npm test
 ```
 
+### Build
+Builds the app for production to the build folder.
+```
+npm test
+```
+
 ### Run only server
-Launches the test runner in the interactive watch mode.
+Runs the server in the development mode.
 ```
 npm run api
 ```
 
 ### Run only client
-Launches the test runner in the interactive watch mode.
+Runs the app in the development mode.
 ```
 npm start
 ```
