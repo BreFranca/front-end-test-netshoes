@@ -15,6 +15,9 @@ const Button = styled.button`
     &:hover {
         background: rgba(255, 255, 255, .6)
     }
+    @media(max-width: 580px) {
+        margin-right: 15px
+    }
 `
 
 export default Button

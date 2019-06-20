@@ -19,6 +19,12 @@ export const Container = styled.div`
         right: 0;
         opacity: 1;
     }
+    @media(max-width: 580px) {
+        width: 70%;
+    }
+    @media(max-width: 420px) {
+        width: 90%;
+    }
 `
 
 export const MaskBag = styled.div`

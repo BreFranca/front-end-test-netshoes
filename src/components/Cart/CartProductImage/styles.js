@@ -7,4 +7,9 @@ export const Image = styled.div`
     background-size: cover;
     background-position: center center;
     display: block;
+    @media(max-width: 580px) {
+        width: 40px;
+        height: 50px;
+        min-width: 40px;
+    }
 `

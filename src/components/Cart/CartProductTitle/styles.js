@@ -6,4 +6,7 @@ export const Title = styled.h4`
     font-weight: 700;
     margin-bottom: 6px;
     max-width: 330px;
+    @media(max-width: 550px) {
+        max-width: 150px;
+    }
 `

@@ -16,10 +16,16 @@ export const Product = styled.div`
             filter: brightness(1) invert(1)
         }
     }
+    @media(max-width: 580px) {
+        padding: 15px 15px 15px 10px
+    }
 `
 
 export const Descriptions = styled.div`
     margin-left: 20px;
+    @media(max-width: 580px) {
+        margin-left: 10px;
+    }
 `
 
 export const RightActions = styled.div`

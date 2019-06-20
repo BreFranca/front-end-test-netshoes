@@ -5,6 +5,9 @@ export const Header = styled.div`
     align-items: center;
     justify-content: center;
     padding: 43px 0; 
+    @media(max-width: 580px) {
+        padding: 20px 0
+    }
 `
 
 export const CountBag = styled.div`
@@ -30,4 +33,7 @@ export const Title = styled.h3`
     color: #FFFFFF;
     text-transform: uppercase;
     margin-left: 23px;
+    @media(max-width: 580px) {
+        margin-left: 15px;
+    }
 `

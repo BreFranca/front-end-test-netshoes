@@ -67,6 +67,9 @@ img.load-item {
 }
 
 @media screen and (max-width: 680px) {
+  body {
+    font-size: 12px;
+  }
   .columns .col {
     width: 50%;
   }
