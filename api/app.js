@@ -16,6 +16,6 @@ app.use(cors());
 app.options('*', cors());
 app.use('/api/', index);
 app.use('/api/products', productRoute);
-app.use('/static', express.static('public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 module.exports = app;
