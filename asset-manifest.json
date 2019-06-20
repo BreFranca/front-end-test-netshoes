@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "https://brefranca.github.io/front-end-test-netshoes/static/css/main.f24d1afb.chunk.css",
-    "main.js": "https://brefranca.github.io/front-end-test-netshoes/static/js/main.ce68fcdd.chunk.js",
-    "main.js.map": "https://brefranca.github.io/front-end-test-netshoes/static/js/main.ce68fcdd.chunk.js.map",
+    "main.css": "https://brefranca.github.io/front-end-test-netshoes/static/css/main.dff85069.chunk.css",
+    "main.js": "https://brefranca.github.io/front-end-test-netshoes/static/js/main.33595953.chunk.js",
+    "main.js.map": "https://brefranca.github.io/front-end-test-netshoes/static/js/main.33595953.chunk.js.map",
     "runtime~main.js": "https://brefranca.github.io/front-end-test-netshoes/static/js/runtime~main.6c2bf03a.js",
     "runtime~main.js.map": "https://brefranca.github.io/front-end-test-netshoes/static/js/runtime~main.6c2bf03a.js.map",
     "static/js/2.b386d207.chunk.js": "https://brefranca.github.io/front-end-test-netshoes/static/js/2.b386d207.chunk.js",
     "static/js/2.b386d207.chunk.js.map": "https://brefranca.github.io/front-end-test-netshoes/static/js/2.b386d207.chunk.js.map",
     "index.html": "https://brefranca.github.io/front-end-test-netshoes/index.html",
-    "precache-manifest.dd71cf38ef9e3988e1676470b3d8c866.js": "https://brefranca.github.io/front-end-test-netshoes/precache-manifest.dd71cf38ef9e3988e1676470b3d8c866.js",
+    "precache-manifest.9524a472fced67a76794e8c317e6112d.js": "https://brefranca.github.io/front-end-test-netshoes/precache-manifest.9524a472fced67a76794e8c317e6112d.js",
     "service-worker.js": "https://brefranca.github.io/front-end-test-netshoes/service-worker.js",
-    "static/css/main.f24d1afb.chunk.css.map": "https://brefranca.github.io/front-end-test-netshoes/static/css/main.f24d1afb.chunk.css.map"
+    "static/css/main.dff85069.chunk.css.map": "https://brefranca.github.io/front-end-test-netshoes/static/css/main.dff85069.chunk.css.map"
   }
 }
