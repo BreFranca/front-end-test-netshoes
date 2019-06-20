@@ -1,14 +1,14 @@
 import axios from "axios"
 
-export const URL = process.env.NODE_ENV
+export const ENV = process.env.NODE_ENV
+export const PUBLIC_URL = process.env.PUBLIC_URL
 
 let API_URL = ''
-if(URL === "development") {
+if(ENV === "development") {
     API_URL = 'http://localhost:8000/api/'
 } else {
-    API_URL = 'http://my-json-server.typicode.com/BreFranca/front-end-test-netshoes/'
+    API_URL = 'https://my-json-server.typicode.com/BreFranca/front-end-test-netshoes/'
 }
-console.log(API_URL)
 export default API_URL
 
 export const formatPrice = (format, price) => {
@@ -46,7 +46,7 @@ export const getImage = id => {
         id = id.toString().split('')
         id = id[1]
     }
-    return '../../../assets/products/corinthians' + id +'.jpg'
+    return PUBLIC_URL + '/assets/products/corinthians' + id +'.jpg'
 }
 
 export const getRandomSize = (sizes) => {
@@ -63,8 +63,6 @@ export const insertSizeAmount = (product, size) => {
 		product.amount = 1
 		product.totalPrice = product.price
     }
-
-    console.log('Depois: ', product.totalPrice)
 
 	if(size) {
 		product.size = size

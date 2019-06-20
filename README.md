@@ -23,8 +23,9 @@ npm test
 
 ### Build
 Builds the app for production to the build folder.
+Open [https://brefranca.github.io/front-end-test-netshoes/](https://brefranca.github.io/front-end-test-netshoes/) to view app in the browser production.
 ```
-npm test
+npm build
 ```
 
 ### Run only server

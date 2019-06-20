@@ -1,6 +1,8 @@
 {
   "name": "front-end-test-netshoes",
   "version": "0.1.0",
+  "description": "Add and remove items to cart.<br /> Quantity and images of the products are random.",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
@@ -11,6 +13,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "express": "^4.15.4",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
@@ -19,11 +22,15 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "api": "node ./api/bin/server.js",
-    "dev": "npm run api & npm start"
+    "dev": "npm run api & npm start",
+    "deploy": "react-scripts build",
+    "build": "react-scripts build && npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BreFranca/front-end-test-netshoes.git"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -41,8 +48,13 @@
     ]
   },
   "devDependencies": {
+    "nodemon": "^1.17.3",
     "react-redux": "^7.1.0",
     "redux": "^4.0.1",
-    "nodemon": "^1.17.3"
-  }
+    "redux-mock-store": "^1.5.3"
+  },
+  "bugs": {
+    "url": "https://github.com/BreFranca/front-end-test-netshoes/issues"
+  },
+  "homepage": "https://brefranca.github.io/front-end-test-netshoes/"
 }
