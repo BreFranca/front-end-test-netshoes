@@ -5,7 +5,7 @@ Quantity and images of the products are random.
 
 ## Getting Started
 Install dependences of the project. <br />
-Runs the app in the development mode.<br />
+Runs the app and server in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 <br />
 Open [http://localhost:8000/api/](http://localhost:8000/api/) to view API in the browser.
