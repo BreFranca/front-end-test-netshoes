@@ -18,14 +18,14 @@ npm run dev
 ### Tests
 Launches the test runner in the interactive watch mode.
 ```
-npm test
+npm run test
 ```
 
 ### Build
 Builds the app for production to the build folder. <br />
 Open [https://brefranca.github.io/front-end-test-netshoes/](https://brefranca.github.io/front-end-test-netshoes/) to view app in the browser production.
 ```
-npm build
+npm run build
 ```
 
 ### Run only server
@@ -37,5 +37,5 @@ npm run api
 ### Run only client
 Runs the app in the development mode.
 ```
-npm start
+npm run start
 ```
