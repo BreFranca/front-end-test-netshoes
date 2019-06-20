@@ -227,9 +227,9 @@ exports.get = (req, res, next) => {
 };
 
 exports.getBySku = (req, res, next) => {
-    const sku = req.params.sku
+    const sku = req.params.sku;
     const product = products.find(product => {
-        return product.id === Number(sku)
+        return product.id === Number(sku);
     })
     res.status(200).send(product);
 };
