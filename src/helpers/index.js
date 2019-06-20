@@ -1,7 +1,15 @@
 import axios from "axios"
 
-// export const API_URL = 'http://localhost:8000/api/'
-export const API_URL = 'http://my-json-server.typicode.com/BreFranca/front-end-test-netshoes/'
+export const URL = process.env.NODE_ENV
+
+let API_URL = ''
+if(URL === "development") {
+    API_URL = 'http://localhost:8000/api/'
+} else {
+    API_URL = 'http://my-json-server.typicode.com/BreFranca/front-end-test-netshoes/'
+}
+console.log(API_URL)
+export default API_URL
 
 export const formatPrice = (format, price) => {
     price = Number(price).toString().split('.')
